@@ -21,7 +21,7 @@ pipeline {
                 echo "Cloning source code"
 
                 git branch: 'main',
-                url: 'https://github.com/YOUR_USERNAME/food-delivery-devsecops-project.git'
+                url: 'https://github.com/ravibhadarge/food-delivery-devsecops-project.git'
             }
         }
 
