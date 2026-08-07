@@ -1,0 +1,47 @@
+# Gitleaks Configuration for Food Delivery Project
+title = "Food Delivery Gitleaks Config"
+
+[extend]
+# Use default gitleaks rules as base
+useDefault = true
+
+# Additional custom rules for this project
+[[rules]]
+id = "mongodb-connection-string"
+description = "MongoDB Connection String"
+regex = '''mongodb(\+srv)?://[^\s"']+'''
+tags = ["database", "mongodb"]
+
+[[rules]]
+id = "stripe-secret-key"
+description = "Stripe Secret Key"
+regex = '''sk_(live|test)_[a-zA-Z0-9]{24,}'''
+tags = ["payment", "stripe"]
+
+[[rules]]
+id = "jwt-secret"
+description = "JWT Secret in code"
+regex = '''(?i)(jwt[_-]?secret|token[_-]?secret)\s*[:=]\s*['"][^'"]{8,}['"]'''
+tags = ["auth", "jwt"]
+
+# Allowlist — files to ignore
+[allowlist]
+paths = [
+  '''\.gitleaks\.toml$''',
+  '''package-lock\.json$''',
+  '''\.env\.example$''',
+  '''README-DEVSECOPS\.md$''',
+  '''README\.md$''',
+  '''terraform/secrets-manager\.tf$''',
+  '''Secrets-Manager/README\.md$''',
+  '''\.github/workflows/devsecops-pipeline\.yml$''',
+]
+
+# Allowlist specific regex patterns that are known demo/placeholder values
+regexes = [
+  '''mongodb://foodadmin:FoodSecure2024@mongodb\.food-delivery\.svc''',
+  '''FoodSecure2024''',
+  '''CHANGE_ME''',
+  '''\$JWT_SECRET''',
+  '''jwt-secret="\$''',
+]
