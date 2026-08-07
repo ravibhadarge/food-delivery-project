@@ -172,7 +172,7 @@ jobs:
           docker save ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY_ADMIN }}:${{ env.IMAGE_TAG }} -o admin-image.tar
 
       - name: Upload image artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: docker-images
           path: |
@@ -479,7 +479,7 @@ jobs:
           allow_issue_writing: false
 
       - name: Upload ZAP Report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         if: always()
         with:
           name: zap-report
