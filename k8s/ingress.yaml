@@ -15,13 +15,8 @@ metadata:
     alb.ingress.kubernetes.io/group.name: food-delivery
 spec:
   ingressClassName: alb
-  tls:
-    - hosts:
-        - DOMAIN_PLACEHOLDER
-        - admin.DOMAIN_PLACEHOLDER
-  rules:
     # Frontend
-    - host: DOMAIN_PLACEHOLDER
+    - #host removed
       http:
         paths:
           - path: /api
@@ -46,7 +41,7 @@ spec:
                 port:
                   number: 80
     # Admin panel
-    - host: admin.DOMAIN_PLACEHOLDER
+    - #host removed
       http:
         paths:
           - path: /
